@@ -1,0 +1,8 @@
+{
+  "name": "wcrush-lp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "W CRUSH iP SOME × Wデザインメソッド 体験LP（グラツィア様）。静的配信＋お申し込みフォームの受け取り",
+  "scripts": { "start": "node server.js" }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wcrush.s-toru.com/sitemap.xml
