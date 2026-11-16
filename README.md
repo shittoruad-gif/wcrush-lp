@@ -57,7 +57,7 @@ docker exec <コンテナ> tail -5 /app/data/applications.jsonl
 - アプリ：`wcrush-lp`（ConoHa VPS 163.44.103.9 の Coolify）
 - Build Pack：Dockerfile／Ports Exposes：`80`／FQDN：`https://wcrush.s-toru.com`
 - **Persistent Storage を `/app/data` に付ける**（付けないと、反映のたびにお申し込みの控えが消える）
-- DNS：`wcrush` A → `163.44.103.9`（s-toru.com は Google Cloud DNS）
+- DNS：`wcrush` A → `163.44.103.9`（s-toru.com のDNSは Squarespace Domains の管理）
 
 push しても自動では反映されない（自動反映の対象は threads-studio のみ）。Coolify の Deploy を押すか、API で起動する。
 
