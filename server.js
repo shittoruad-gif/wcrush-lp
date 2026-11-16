@@ -12,9 +12,9 @@ const PUBLIC_DIR = new URL("./public/", import.meta.url).pathname;
 const DATA_DIR = process.env.DATA_DIR || "/app/data";
 const LOG_FILE = join(DATA_DIR, "applications.jsonl");
 
-// 通知先（グラツィア様のご指定。2026-11-16）。環境変数 NOTIFY_TO で上書きできる
-const NOTIFY_TO = (process.env.NOTIFY_TO || "wdm.info@grazia.co.jp,ayumigrazia@yahoo.co.jp,press@grazia.co.jp")
-  .split(",").map(s => s.trim()).filter(Boolean);
+// 通知先は環境変数 NOTIFY_TO（カンマ区切り）で渡す。
+// 先方のメールアドレスなので、このリポジトリには書かない（公開リポジトリのため）。Coolify の環境変数に入れる。
+const NOTIFY_TO = (process.env.NOTIFY_TO || "").split(",").map(s => s.trim()).filter(Boolean);
 const MAIL_FROM = process.env.MAIL_FROM || "W CRUSH 体験申し込み <noreply@s-toru.com>";
 const MAIL_BCC = (process.env.MAIL_BCC || "").split(",").map(s => s.trim()).filter(Boolean);
 
@@ -38,6 +38,7 @@ const jst = (d) => new Date(d.getTime() + 9 * 3600 * 1000).toISOString().replace
 async function sendMail(body) {
   const key = process.env.RESEND_API_KEY;
   if (!key) { console.warn("[apply] RESEND_API_KEY が未設定のため、通知メールは送っていません（控えは保存済み）"); return false; }
+  if (!NOTIFY_TO.length) { console.warn("[apply] NOTIFY_TO が未設定のため、通知メールは送っていません（控えは保存済み）"); return false; }
   const lines = LABELS.filter(([k]) => body[k]).map(([k, label]) => `${label}：${body[k]}`);
   const text = [
     "W CRUSH 体験のお申し込みがありました。", "",

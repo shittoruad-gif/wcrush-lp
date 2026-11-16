@@ -46,7 +46,7 @@ docker exec <コンテナ> tail -5 /app/data/applications.jsonl
 | 変数 | 既定 | 内容 |
 |---|---|---|
 | `RESEND_API_KEY` | （なし） | **これが無いと通知メールは飛ばない**（控えは残る）。Resend の送信キー |
-| `NOTIFY_TO` | wdm.info@grazia.co.jp, ayumigrazia@yahoo.co.jp, press@grazia.co.jp | 通知先（カンマ区切り）。2026-11-16 先方ご指定 |
+| `NOTIFY_TO` | （なし） | **これが無いと通知メールは飛ばない**。通知先をカンマ区切りで。先方のアドレスなのでコードには書かず、Coolify の環境変数に入れる |
 | `MAIL_FROM` | `W CRUSH 体験申し込み <noreply@s-toru.com>` | 差出人。**Resend で認証済みのドメイン**にする |
 | `MAIL_BCC` | （なし） | しっとる側の控え用 |
 | `DATA_DIR` | `/app/data` | 控えの置き場所 |
