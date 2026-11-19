@@ -75,7 +75,7 @@ push しても自動では反映されない（自動反映の対象は threads-
 ## 計測（2026-11-19）
 - `public/assets/track.js`：LP の出来事（表示・節ごとの到達・スクロール率・ボタンのクリック・ボタン以外のタップ・フォームの入力開始／欄／エラー／送信・滞在時間・申し込み完了）を `POST /api/t` に送る。同じ出来事を Meta ピクセル（trackCustom: CTAClick / FormStart / ViewApplyForm / LineClick / MapClick）と Microsoft Clarity（event / set）にも渡す。
   - 広告 URL の `utm_*`・`fbclid` は最初の訪問で覚え、フォームの隠し欄 `trk_*` として申し込みの控えと通知メールに入る（どの広告から申し込みが来たか分かる）。
-  - Clarity は `track.js` 冒頭の `CLARITY_ID` を入れると読み込む（空の間は読み込まない）。
+  - Clarity はプロジェクト「GRAZIA W CRUSH 体験LP」（ID zfwgr1c7u3）。`track.js` 冒頭の `CLARITY_ID`。
   - 名前・電話番号などフォームの中身は送らない。
 - `stats.js`：`/api/t` の受け取り（`data/events.jsonl` に追記。受け取る項目は固定）と、集計ページ `GET /stats?k=<STATS_KEY>`（`&days=1|7|30|90`、`&ch=流入元`、`&camp=広告`、`&format=json`）。
   - Coolify の環境変数 `STATS_KEY` が無い間は `/stats` は 404。

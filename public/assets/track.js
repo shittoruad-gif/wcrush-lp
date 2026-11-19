@@ -8,7 +8,7 @@
 (function () {
   "use strict";
   // Clarity のプロジェクトID（clarity.microsoft.com で作成）。空のあいだは Clarity を読み込まない。
-  var CLARITY_ID = "";
+  var CLARITY_ID = "zfwgr1c7u3";
 
   var W = window, D = document;
   var page = /\/thanks\/?$/.test(location.pathname) ? "thanks" : "lp";
