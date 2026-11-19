@@ -6,6 +6,7 @@
 import { createServer } from "node:http";
 import { readFile, appendFile, mkdir } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
+import { handleTrack, handleStats } from "./stats.js";
 
 const PORT = Number(process.env.PORT || 80);
 const PUBLIC_DIR = new URL("./public/", import.meta.url).pathname;
@@ -31,6 +32,7 @@ const LABELS = [
   ["salon", "サロン名"], ["name", "ご担当者名"], ["tel", "電話番号"], ["email", "メールアドレス"], ["pref", "都道府県"],
   ["date1", "第1希望日"], ["time1", "第1希望の時間"], ["date2", "第2希望日"], ["time2", "第2希望の時間"],
   ["date3", "第3希望日"], ["time3", "第3希望の時間"], ["message", "ご質問・ご要望"], ["entry", "入口"],
+  ["trk_ch", "流入元"], ["trk_utm_campaign", "広告キャンペーン"], ["trk_utm_content", "広告（素材）"],
 ];
 
 const jst = (d) => new Date(d.getTime() + 9 * 3600 * 1000).toISOString().replace("T", " ").slice(0, 19);
@@ -109,6 +111,8 @@ async function serveStatic(req, res) {
 createServer((req, res) => {
   if (req.url === "/healthz") { res.writeHead(200).end("ok"); return; }
   if (req.method === "POST" && req.url === "/api/apply") { handleApply(req, res).catch(e => { console.error(e); res.writeHead(500).end("error"); }); return; }
+  if (req.method === "POST" && req.url === "/api/t") { handleTrack(req, res, DATA_DIR).catch(e => { console.error(e); if (!res.headersSent) res.writeHead(500).end(); }); return; }
+  if ((req.method === "GET" || req.method === "HEAD") && req.url.startsWith("/stats")) { handleStats(req, res, DATA_DIR).catch(e => { console.error(e); res.writeHead(500).end("error"); }); return; }
   if (req.method !== "GET" && req.method !== "HEAD") { res.writeHead(405).end("method not allowed"); return; }
   serveStatic(req, res).catch(e => { console.error(e); res.writeHead(500).end("error"); });
 }).listen(PORT, () => console.log(`[wcrush-lp] listening on ${PORT} / 通知先 ${NOTIFY_TO.join(", ")}`));

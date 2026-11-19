@@ -1,7 +1,7 @@
 FROM node:22-alpine
 
 WORKDIR /app
-COPY package.json server.js ./
+COPY package.json server.js stats.js ./
 COPY public ./public
 
 # お申し込みの控えの置き場所（Coolify の Persistent Storage を /app/data に付ける）

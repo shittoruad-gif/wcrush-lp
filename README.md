@@ -71,3 +71,16 @@ push しても自動では反映されない（自動反映の対象は threads-
 - 2026-11-18 追加。ピクセル「GRAZIA_W CRUSH体験LP」（ID 2574963436333615・ビジネス WDM認定講師|根岸・広告アカウント GRAZIA_W CRUSH体験_Meta広告 にリンク済み）。
 - LP本体で PageView、`/wcrush/thanks/`（送信完了）で PageView ＋ Lead。
 - 作り元（lp/grazia）が手元に無かったため、`public/` に直接入れた。作り元から作り直すときは、この2か所の `<!-- Meta ピクセル -->` を作り元にも入れること。
+
+## 計測（2026-11-19）
+- `public/assets/track.js`：LP の出来事（表示・節ごとの到達・スクロール率・ボタンのクリック・ボタン以外のタップ・フォームの入力開始／欄／エラー／送信・滞在時間・申し込み完了）を `POST /api/t` に送る。同じ出来事を Meta ピクセル（trackCustom: CTAClick / FormStart / ViewApplyForm / LineClick / MapClick）と Microsoft Clarity（event / set）にも渡す。
+  - 広告 URL の `utm_*`・`fbclid` は最初の訪問で覚え、フォームの隠し欄 `trk_*` として申し込みの控えと通知メールに入る（どの広告から申し込みが来たか分かる）。
+  - Clarity は `track.js` 冒頭の `CLARITY_ID` を入れると読み込む（空の間は読み込まない）。
+  - 名前・電話番号などフォームの中身は送らない。
+- `stats.js`：`/api/t` の受け取り（`data/events.jsonl` に追記。受け取る項目は固定）と、集計ページ `GET /stats?k=<STATS_KEY>`（`&days=1|7|30|90`、`&ch=流入元`、`&camp=広告`、`&format=json`）。
+  - Coolify の環境変数 `STATS_KEY` が無い間は `/stats` は 404。
+- 作り元の `publish.py` でも同じタグとフッターの注記を差し込むので、LP を作り直しても計測は消えない。
+
+### 広告のリンク先（例）
+`https://wcrush.s-toru.com/wcrush/?utm_source=meta&utm_medium=paid&utm_campaign=wcrush_trial&utm_content=B_9x16`
+（`utm_content` を B_9x16 / B_4x5 / B_1x1 にすると、素材ごとの申し込みまで分かれる）
