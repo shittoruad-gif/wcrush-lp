@@ -756,6 +756,23 @@
 .af-dt-row b { font-size: 13.5px; color: var(--ink); }
 .af-dt-row input, .af-dt-row select { min-width: 0; width: 100%; }
 @media (max-width: 480px) { .af-dt-row { grid-template-columns: 1fr 1fr; } .af-dt-row b { grid-column: 1 / -1; margin-bottom: -4px; } .af-dt legend small { display: block; margin: 2px 0 0; } }
+
+/* LINEボタン（2026-11-24 先方のご要望「LINEボタンを上部や途中に」） */
+.btn.ln { background: #06c755; color: #fff; border: 0; box-shadow: 0 12px 26px -12px rgba(6,199,85,.55); }
+.btn.ln:hover { background: #05b34c; transform: translateY(-2px); }
+.btn.ln svg { width: 20px; height: 20px; flex: none; }
+.fv-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 18px 0 6px; }
+.fv-line .btn { min-height: 52px; padding: 0 24px; }
+.fv-line small { font-size: 12px; opacity: .75; }
+@media (max-width: 860px) {
+  .fv-line .btn { width: 100%; }
+  .fv-line small { width: 100%; text-align: center; }
+  .sticky { display: flex; gap: 8px; }
+  .sticky a { flex: 1 1 auto; min-width: 0; padding: 0 14px; font-size: 14px; }
+  .sticky a small { font-size: 11px; }
+  .sticky a.st-line { flex: 0 0 34%; justify-content: center; background: #06c755; color: #fff; }
+}
+@media (max-width: 400px) { .sticky a small { display: none; } .sticky a { justify-content: center; } }
 </style>
 <!-- Meta ピクセル（GRAZIA_W CRUSH体験LP・2026-11-18） -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2574963436333615');fbq('track','PageView');</script>
@@ -771,7 +788,7 @@
   </div>
 </header>
 <main id="top">
-  <section class="hero" data-hide-sticky>
+  <section class="hero">
     <div class="wrap">
       <div>
         <p class="who rv"><b>WDM認定インストラクター募集</b><span>サロンオーナー・施術者さまへ</span></p>
@@ -779,6 +796,7 @@
         <p class="sub rv d1"><span class="nb">塗る×技術で生まれる、</span><span class="nb">新しいフェイス＆ボディケア</span></p>
         <p class="offer rv d2"><span class="nb">導入前に、まずは</span><span class="nb"><b>8,800</b>円で施術体験</span></p>
         <div class="fv-price rv d2"><span class="fp-h">導入前に、まずは施術体験</span><span class="was">通常 <s>22,000円</s></span><span class="arw">→</span><span class="now"><small>先着30名様限定価格</small><b>8,800</b>円<em>（税込）</em></span></div>
+        <div class="fv-line rv d2"><a class="btn ln" href="https://lin.ee/5goQ38j" target="_blank" rel="noopener" data-entry="line-fv"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINEで気軽に相談する</a><small>友だち追加だけでもOK・ご質問はLINEで</small></div>
         <p class="lead rv d2"><b class="hl">認定インストラクターとして活動するための技術・メソッドを、70分で体験。</b>W CRUSH iP SOME × W DESIGN METHOD。サロンに導入する前に、商品と技術をご自身で確かめてください。</p>
         <ul class="points rv d2"><li>WDM認定インストラクター募集の特別体験</li><li>全国から募集</li></ul>
         <div class="acts rv d3">
@@ -819,7 +837,7 @@
         <p class="ps-h"><small>W CRUSH × W DESIGN METHOD なら</small><span class="nb">その悩みを、</span><span class="nb">サロンの新しい強みに。</span></p>
         <div class="ps-grid"><div class="rv d0"><i>01</i><b>新しい来店理由</b><span>「塗る×技術」の施術を、他店にない看板メニューに。新規のお客様に選ばれる理由をつくります。</span></div><div class="rv d1"><i>02</i><b>リピートと客単価</b><span>継続コースとホームケアの店販で、再来店と客単価アップにつなげます。</span></div><div class="rv d2"><i>03</i><b>自信を持てる提案</b><span>体系化されたメソッドと公式の販促物で、スタッフも同じ品質で提案できます。</span></div></div>
       </div>
-      <div class="pain-cta rv"><div class="cta2"><a class="btn g" href="#apply" data-want="trial" data-entry="pain-trial">70分の施術体験を予約する<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn w" href="#apply" data-want="consult" data-entry="pain-consult">体験前に説明を聞きたい</a></div></div>
+      <div class="pain-cta rv"><div class="cta2"><a class="btn g" href="#apply" data-want="trial" data-entry="pain-trial">70分の施術体験を予約する<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn w" href="#apply" data-want="consult" data-entry="pain-consult">体験前に説明を聞きたい</a><a class="btn ln" href="https://lin.ee/5goQ38j" target="_blank" rel="noopener" data-entry="line-pain"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINEで相談する</a></div></div>
     </div>
   </section>
   <section class="sec light ba" id="before-after">
@@ -854,7 +872,7 @@
       </div>
       <p class="ba-after rv">施術直後だけでなく、2〜3日後にさらに変化を実感される方もいらっしゃいます。</p>
       <p class="small ba-note rv">※写真は施術者ご本人の同意を得た施術例です。仕上がりの感じ方には個人差があり、同じ結果を保証するものではありません。</p>
-      <div class="ba-cta rv"><div class="cta2"><a class="btn g" href="#apply" data-want="trial" data-entry="ba-trial">70分の施術体験を予約する<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn w" href="#apply" data-want="consult" data-entry="ba-consult">体験前に説明を聞きたい</a></div></div>
+      <div class="ba-cta rv"><div class="cta2"><a class="btn g" href="#apply" data-want="trial" data-entry="ba-trial">70分の施術体験を予約する<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn w" href="#apply" data-want="consult" data-entry="ba-consult">体験前に説明を聞きたい</a><a class="btn ln" href="https://lin.ee/5goQ38j" target="_blank" rel="noopener" data-entry="line-ba"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINEで相談する</a></div></div>
     </div>
   </section>
   <section class="sec light method" id="method">
@@ -1048,7 +1066,7 @@
   <div class="midcta">
     <div class="wrap">
       <p>その70分が、サロンの次の看板メニューになるか。まずはご自身で。</p>
-      <div class="cta2"><a class="btn g" href="#apply" data-want="trial" data-entry="mid-trial">70分の施術体験を予約する<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn w" href="#apply" data-want="consult" data-entry="mid-consult">体験前に説明を聞きたい</a></div>
+      <div class="cta2"><a class="btn g" href="#apply" data-want="trial" data-entry="mid-trial">70分の施術体験を予約する<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a><a class="btn w" href="#apply" data-want="consult" data-entry="mid-consult">体験前に説明を聞きたい</a><a class="btn ln" href="https://lin.ee/5goQ38j" target="_blank" rel="noopener" data-entry="line-mid"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINEで相談する</a></div>
     </div>
   </div>
   <section class="sec room" id="showroom">
@@ -1217,6 +1235,7 @@
   <p class="wrap ft-note" style="font-size:11px;opacity:.6;margin-top:16px;line-height:1.7">当ページでは、ページの改善と広告の効果測定のため、Cookie等を用いてアクセス状況（閲覧した箇所・クリック等）を取得しています。取得したデータは Meta Platforms, Inc. および Microsoft Corporation（Microsoft Clarity）のサービスでも処理されます。お名前などのフォームの入力内容は計測に使用しません。</p>
 </footer>
 <div class="sticky" data-sticky>
+  <a class="st-line" href="https://lin.ee/5goQ38j" target="_blank" rel="noopener" data-entry="line-sticky">LINEで相談</a>
   <a href="#apply" data-want="trial" data-entry="sticky-trial">体験を予約する<small>¥8,800（税込）先着30名様</small></a>
 </div>
 <script src="../assets/lp.js"></script>

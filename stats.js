@@ -22,6 +22,7 @@ const EL_NAME = {
   "mid-trial": "中盤：体験予約", "mid-consult": "中盤：説明を聞く", "final-trial": "最後：体験予約", "final-consult": "最後：説明を聞く",
   "sticky-trial": "画面下の固定ボタン", "line-form": "LINE（フォーム下）", "line-footer": "LINE（フッター）", map: "地図を開く",
   "form-submit-btn": "送信ボタン", logo: "ロゴ",
+  "line-fv": "LINE（ファーストビュー）", "line-pain": "LINE（お悩み下）", "line-ba": "LINE（B/A下）", "line-mid": "LINE（中盤）", "line-sticky": "LINE（画面下の固定ボタン）",
 };
 const FIELD_NAME = {
   want: "ご希望の内容", trial_place: "体験場所", consult_way: "説明の方法", salon: "サロン名", name: "ご担当者名", tel: "電話番号",
