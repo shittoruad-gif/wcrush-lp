@@ -85,8 +85,10 @@ export function computeStats(events, apps, { days = 30, ch = "", camp = "" } = {
     if (e.ev === "sec") x.secs.add(e.d.id);
     if (e.ev === "scroll") x.maxScroll = Math.max(x.maxScroll, e.d.p || 0);
     if (e.ev === "click") x.clicks.push(e.d.el);
-    if (e.ev === "form_start") x.formStart = true;
-    if (e.ev === "field") { x.fields.add(e.d.name); x.lastField = e.d.name; }
+    // 11/25以前の誤検知（フォーム自体へのフォーカス＝欄名が [object Object]）は数えない
+    const bad = (v) => !v || v === "[object Object]";
+    if (e.ev === "form_start" && !bad(e.d.field)) x.formStart = true;
+    if (e.ev === "field" && !bad(e.d.name)) { x.fields.add(e.d.name); x.lastField = e.d.name; }
     if (e.ev === "form_submit") x.submit = true;
     if (e.ev === "lead") x.lead = true;
     if (e.ev === "leave" && e.page === "lp") x.dwell = Math.max(x.dwell, e.t || 0);

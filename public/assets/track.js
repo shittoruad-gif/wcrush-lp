@@ -164,8 +164,12 @@
     });
     var started = false, touched = {};
     form.addEventListener("focusin", function (e) {
-      var n = e.target && e.target.name;
-      if (!n || n === "bot-field") return;
+      // 入力欄（input・select・textarea）だけを数える。フォーム自体にフォーカスが当たると
+      // form.name が「name」欄の要素を返し、[object Object] として誤って入力開始に数えていた
+      var t = e.target;
+      if (!t || !/^(INPUT|SELECT|TEXTAREA)$/.test(t.tagName) || t.type === "hidden") return;
+      var n = t.name;
+      if (typeof n !== "string" || !n || n === "bot-field") return;
       if (!started) { started = true; send("form_start", { field: n }); meta("FormStart"); cl("event", "フォーム入力開始"); }
       if (!touched[n]) { touched[n] = 1; send("field", { name: n }); }
     });
